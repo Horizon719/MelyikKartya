@@ -10,48 +10,63 @@ public class MelyikKartya {
         
         int[] szamok = new int[21];
         
-        for (int i = 0; i < szamok.length; i++) {
-            szamok[i] = i + 1;
-        }
+        String[] pakli = pakliOsszeAllit();
         
         for (int i = 0; i < 3; i++) {
-            kirak(szamok);
+            kirak(pakli);
             int oszlop = melyik();
-            kever(szamok, oszlop);
+            kever(pakli, oszlop);
         }
         
-        ezVolt(szamok);
+        ezVolt(pakli);
         
         
     }
     
     
-    private static void kirak(int[] kartyak) {
-        for (int i = 0; i < kartyak.length; i++) {
-            System.out.printf("%d ", kartyak[i]);
-            if (i % 3 == 2) {
+    private static void kirak(String[] kartyak) {
+        for (int i = 1; i < kartyak.length; i++) {
+            System.out.printf("%8s", kartyak[i]);
+            if (i % 3 == 0) {
                 System.out.println("");
             }
         }
     }
     
     private static int melyik() {
-        System.out.print("Melyik oszlopban van a kiválasztott szám? (1-3)");
         int oszlop;
         
         do{
+            System.out.print("Melyik oszlopban van a kiválasztott szám? (1-3)");
             oszlop = SC.nextInt();
         }while (oszlop > 3 || oszlop < 1);
         
         return oszlop;
     }
     
-    private static void ezVolt(int[] kartyak) {
-        System.out.printf("A kiválasztott kártya a %s volt", kartyak[10]);
+    private static void ezVolt(String[] kartyak) {
+        System.out.printf("A kiválasztott kártya a %s volt\n", kartyak[11]);
     }
     
-    private static void kever(int[] kartyak, int oszlop) {
+    private static void kever(String[] kartyak, int oszlop) {
         
+    }
+
+    private static String[] pakliOsszeAllit() {
+        String[] szinek = {"P", "T", "Z", "M"};
+        String[] ertekek = {"Ász", "Kir", "Fel", "X", "IX", "VIII"};
+        String[] pakli = new String[22];
+        int i = 1;
+        
+        for (String szin : szinek) {
+            int j = 0;
+            
+            while(i< pakli.length && j< ertekek.length){
+                pakli[i++] = szin+"_"+ertekek[j++];
+            }
+        }
+        
+        return pakli;
     }
     
 }
