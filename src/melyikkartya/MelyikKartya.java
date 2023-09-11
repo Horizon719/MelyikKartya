@@ -8,8 +8,6 @@ public class MelyikKartya {
 
     public static void main(String[] args) {
         
-        int[] szamok = new int[21];
-        
         String[] pakli = pakliOsszeAllit();
         
         for (int i = 0; i < 3; i++) {
@@ -54,6 +52,20 @@ public class MelyikKartya {
         switch(oszlop){
             default:
                 break;
+            case 1:
+                for (int i = 1; i <= 7; i++) {
+                    ujTomb[i] = kartyak[20 - (i-1)*3];
+                    ujTomb[i+7] = kartyak[19 - (i-1)*3];
+                    ujTomb[i+14] = kartyak[21 - (i-1)*3];
+                }
+                break;
+            case 2:
+                for (int i = 1; i <= 7; i++) {
+                    ujTomb[i] = kartyak[19 - (i-1)*3];
+                    ujTomb[i+7] = kartyak[20 - (i-1)*3];
+                    ujTomb[i+14] = kartyak[21 - (i-1)*3];
+                }
+                break;
             case 3:
                 for (int i = 1; i <= 7; i++) {
                     ujTomb[i] = kartyak[19 - (i - 1) * 3];
@@ -62,7 +74,7 @@ public class MelyikKartya {
                     }
                 break;
         }
-        
+
         return ujTomb;
     }
 
