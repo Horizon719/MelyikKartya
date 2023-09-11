@@ -8,14 +8,12 @@ public class MelyikKartya {
 
     public static void main(String[] args) {
         
-        int[] szamok = new int[21];
-        
         String[] pakli = pakliOsszeAllit();
         
         for (int i = 0; i < 3; i++) {
             kirak(pakli);
             int oszlop = melyik();
-            kever(pakli, oszlop);
+            pakli = kever(pakli, oszlop);
         }
         
         ezVolt(pakli);
@@ -48,8 +46,28 @@ public class MelyikKartya {
         System.out.printf("A kiválasztott kártya a %s volt\n", kartyak[11]);
     }
     
-    private static void kever(String[] kartyak, int oszlop) {
+    private static String[] kever(String[] kartyak, int oszlop) {
+        String[] ujTomb = new String[kartyak.length];
         
+        switch(oszlop){
+            default:
+                break;
+            case 1:
+                for (int i = 1; i <= 7; i++) {
+                    ujTomb[i] = kartyak[20 - (i-1)*3];
+                    ujTomb[i+7] = kartyak[19 - (i-1)*3];
+                    ujTomb[i+14] = kartyak[21 - (i-1)*3];
+                }
+                break;
+            case 2:
+                for (int i = 1; i <= 7; i++) {
+                    ujTomb[i] = kartyak[19 - (i-1)*3];
+                    ujTomb[i+7] = kartyak[20 - (i-1)*3];
+                    ujTomb[i+14] = kartyak[21 - (i-1)*3];
+                }
+                break;
+        }
+        return ujTomb;
     }
 
     private static String[] pakliOsszeAllit() {
