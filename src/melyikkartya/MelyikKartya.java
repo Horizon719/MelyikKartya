@@ -26,7 +26,7 @@ public class MelyikKartya {
     
     private static void kirak(String[] kartyak) {
         for (int i = 1; i < kartyak.length; i++) {
-            System.out.printf("%8s", kartyak[i]);
+            System.out.printf("%-10s", kartyak[i]);
             if (i % 3 == 0) {
                 System.out.println("");
             }
@@ -37,7 +37,7 @@ public class MelyikKartya {
         int oszlop;
         
         do{
-            System.out.print("Melyik oszlopban van a kiválasztott szám? (1-3)");
+            System.out.print("Melyik oszlopban van a kiválasztott szám (1-3)? ");
             oszlop = SC.nextInt();
         }while (oszlop > 3 || oszlop < 1);
         
